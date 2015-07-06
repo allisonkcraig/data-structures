@@ -19,7 +19,7 @@ def unique_houses(filename):
         # line.rstrip( )
         split_line = line.split("|")
         # print split_line    
-        houses = set(split_line[2] for house in split_line)
+        houses = set(split_line[2] for house in split_line if split_line[2])
     return houses
 
 print unique_houses('cohort_data.txt')
