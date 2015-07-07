@@ -1,30 +1,30 @@
-def unique_houses(filename):
-    """TODO: Create a set of student houses.
+# def unique_houses(filename):
+#     """TODO: Create a set of student houses.
 
-    Iterates over the cohort_data.txt file to look for all of the included house names
-    and creates a set called 'houses' that holds those names.
+#     Iterates over the cohort_data.txt file to look for all of the included house names
+#     and creates a set called 'houses' that holds those names.
 
-        ex. houses = set([ "Hufflepuff", 
-                    "Slytherin", 
-                    "Ravenclaw", 
-                    "Gryffindor", 
-                    "Dumbledore's Army",
-                    "Order of the Phoenix"
-            ])
+#         ex. houses = set([ "Hufflepuff", 
+#                     "Slytherin", 
+#                     "Ravenclaw", 
+#                     "Gryffindor", 
+#                     "Dumbledore's Army",
+#                     "Order of the Phoenix"
+#             ])
     
-    """
-    houses_list = []
+#     """
+#     houses_list = []
 
-    open_file = open(filename)
-    for line in open_file:
-        split_line = line.rstrip().split("|")
-        house = [split_line[2] for word in split_line]
-        if house != '':
-            houses_list.extend(house)
-    houses = set(houses_list)
-    # print houses
+#     open_file = open(filename)
+#     for line in open_file:
+#         split_line = line.rstrip().split("|")
+#         house = [split_line[2] for word in split_line]
+#         if house != '':
+#             houses_list.extend(house)
+#     houses = set(houses_list)
+#     # print houses
 
-unique_houses('cohort_data.txt')
+# unique_houses('cohort_data.txt')
 
 
 def sort_by_cohort(filename):
@@ -111,9 +111,46 @@ def students_by_house(filename):
     tas = []
 
     # Code goes here
+    open_file = open(filename)
+    for line in open_file:
+        split_line = line.rstrip().split("|")
+        last_name = [split_line[1]]
+        print last_name
+        house = split_line[2]
+        print house
+        if split_line[0] == "Denise" or split_line[4] != "Winter 2015" or split_line[4] != "Summer 2015" or split_line[4] != "Spring 2015":
+            if house == "Gryffindor":
+                gryffindor.extend(last_name)
+            elif house == "Hufflepuff":
+                hufflepuff.extend(last_name)
+            elif house == "Slytherin":
+                slytherin.extend(last_name)
+            elif house == "Ravenclaw":
+                ravenclaw.extend(last_name)
+            elif house == "Dumbledore's Army":
+                dumbledores_army.extend(last_name)
+            else:
+                order_of_the_phoenix.extend(last_name)
+        else:
+            tas.extend(last_name)
+
+    print "Gryffindor"
+    print gryffindor
+    print "Hufflepuff"
+    print hufflepuff
+    print "Slytherin"
+    print slytherin
+    print "Ravenclaw"
+    print ravenclaw
+    print "Dumbledore's Army"
+    print dumbledores_army
+    print "Order of the Pheonix"
+    print order_of_the_phoenix
+                
 
     return all_students
 
+students_by_house('cohort_data.txt')
 
 def all_students_tuple_list(filename):
     """TODO: Create a list of tuples of student data.
